@@ -110,9 +110,13 @@
     document.body.appendChild(myCanvas);
     var confettti = window.confetti;
     var scalar = 2;
+    var pineapple = confetti.shapeFromText({ text: '❤️', scalar });
 
     confetti({
-        scalar
+        shapes: [pineapple],
+        scalar,
+        gravity: 0.6,
+        particleCount: 200
     });
 
 </script>
