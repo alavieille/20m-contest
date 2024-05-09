@@ -32,6 +32,11 @@
             border-color: #F7DEDC;
             border-width: 2px;
         }
+        .form-control:focus {
+            outline: 0;
+            border-color: #F7DEDC;
+            box-shadow: 0 0 0 0.25rem #F7DEDC;
+        }
 
         .card-image {
             border-color: #F7DEDC;
@@ -99,6 +104,17 @@
         </div>
     </div>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+    var myCanvas = document.createElement('canvas');
+    document.body.appendChild(myCanvas);
+    var confettti = window.confetti;
+    var scalar = 2;
 
+    confetti({
+        scalar
+    });
+
+</script>
 </body>
 </html>
