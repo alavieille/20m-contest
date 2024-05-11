@@ -131,13 +131,10 @@
     var scalar = 2;
     var pineapple = window.confetti.shapeFromText({ text: '❤️', scalar });
     var modal = new bootstrap.Modal('#gift');
-    modal.show();
     var secretValue = 'bcsr';
     document.querySelector('#validate').addEventListener('click', function() {
-       console.log('valide');
        var inputs = document.querySelectorAll('.input-text');
        var userValue = '';
-
 
         for (var input of inputs) {
            userValue += input.value;
@@ -158,7 +155,6 @@
            document.querySelector('#gift')
            modal.show();
        }
-       console.log(userValue);
     });
 
 </script>
