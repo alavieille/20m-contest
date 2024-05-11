@@ -115,7 +115,8 @@
 
         <div class="modal-dialog">
                 <div class="modal-content">
-                    <img src="test2.png" style="width: 100%"/>
+                    loreum ipsum test se
+                    <!--<img src="test2.png" style="width: 100%"/>-->
                 </div>
             </div>
         </div>
@@ -141,7 +142,7 @@
            input.classList.remove('input-error');
        }
 
-       if (userValue !== secretValue) {
+       if (userValue.toLowerCase() !== secretValue.toLowerCase()) {
            for (var input of inputs) {
                input.classList.add('input-error');
            }
