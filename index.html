@@ -31,6 +31,13 @@
             font-size:50px;
             border-color: #F7DEDC;
             border-width: 2px;
+            height:80px;
+            width:50px;
+        }
+
+        .input-text.input-error {
+            border-color: #EB3352 !important;
+            border-width: 3px !important;
         }
         .form-control:focus {
             outline: 0;
@@ -49,7 +56,7 @@
 
     <div class="px-4 py-5 text-center bg-primary">
         <div class="mb-5">
-            <img src="title.png" class="img-fluid"/>
+            <img src="title2.png" class="img-fluid"/>
         </div>
         <div class="mt-3">
             <img src="special2.png" class="img-fluid"/>
@@ -65,17 +72,14 @@
             <div class="col-md-auto">
                 <div class="gap-3 d-flex justify-content-center mx-auto text-center">
                     <input
-                            style="height:80px; width:50px"
                             maxlength="1"
                             type="text" name="letter[]"
                             class="input-text form-control p-2"
                     ><input
-                        style="height:80px; width:50px"
                         maxlength="1"
                         type="text" name="letter[]"
                         class="input-text form-control p-2"
                 ><input
-                        style="height:80px; width:50px"
                         maxlength="1"
                         type="text" name="letter[]"
                         class="input-text form-control p-2"
@@ -87,35 +91,74 @@
                 >
                 </div>
                 <div class="text-center">
-                <button type="button" class="btn btn-primary button-red mt-5 btn-lg px-4 gap-3">Valider</button>
+                <button type="submit"
+                        id="validate"
+                        class="btn btn-primary button-red mt-5 btn-lg px-4 gap-3">Valider</button>
                 </div>
             </div>
         </div>
         <div class="justify-content-md-center">
-        <div class="card-image card mt-5 p-2 mx-auto" style="width: 18rem;" >
-            <img class="card-img-top" src="440711935_369398308783855_7945418713269575162_n.png" />
+            <div class="card-image card mt-5 p-2 mx-auto" style="width: 18rem;" >
+                <img class="card-img-top" src="440711935_369398308783855_7945418713269575162_n.png" />
+            </div>
         </div>
+        <div class="text-center mt-5 sticked-bottom">
+            <div class="text-secondary">
+                © Copyright
+                <img src="20minutes-blue-1000.png" height="50" width="50"/>
+            </div>
         </div>
     </div>
-    <div class="text-center mt-5 sticked-bottom">
-        <div class="text-secondary">
-            © Copyright
-            <img src="20minutes-blue-1000.png" height="50" width="50"/>
+    <div class="modal-dialog modal-dialog-centered">
+        <!-- Modal -->
+        <div class="modal fade" id="gift" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog">
+                <div class="modal-content">
+                    <img src="test2.png" style="width: 100%"/>
+                </div>
+            </div>
         </div>
     </div>
+
 </main>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
 <script>
     var myCanvas = document.createElement('canvas');
     document.body.appendChild(myCanvas);
-    var confettti = window.confetti;
     var scalar = 2;
-    var pineapple = confetti.shapeFromText({ text: '❤️', scalar });
+    var pineapple = window.confetti.shapeFromText({ text: '❤️', scalar });
+    var modal = new bootstrap.Modal('#gift');
+    modal.show();
+    var secretValue = 'bcsr';
+    document.querySelector('#validate').addEventListener('click', function() {
+       console.log('valide');
+       var inputs = document.querySelectorAll('.input-text');
+       var userValue = '';
 
-    confetti({
-        shapes: [pineapple],
-        scalar,
-        particleCount: 200
+
+        for (var input of inputs) {
+           userValue += input.value;
+           input.classList.remove('input-error');
+       }
+
+       if (userValue !== secretValue) {
+           for (var input of inputs) {
+               input.classList.add('input-error');
+           }
+       } else {
+           window.confetti({
+               shapes: [pineapple],
+               scalar,
+               particleCount: 100,
+               zIndex: 9999
+           })
+           document.querySelector('#gift')
+           modal.show();
+       }
+       console.log(userValue);
     });
 
 </script>
