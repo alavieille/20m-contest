@@ -130,6 +130,8 @@
 
         <div class="modal-dialog">
                 <div class="modal-content py-2 px-2">
+                    <img src="test2.png" style="width: 100%"/>
+                    <p class="text-gift">* Bon cadeau pour un restaurant au japon</p>
                 </div>
             </div>
         </div>
@@ -145,7 +147,8 @@
     var scalar = 2;
     var pineapple = window.confetti.shapeFromText({ text: '❤️', scalar });
     var modal = new bootstrap.Modal('#gift');
-    var secretValue = 'test';
+    var secretValue = 'bcsr';
+    
     document.querySelector('#validate').addEventListener('click', function() {
        var inputs = document.querySelectorAll('.input-text');
        var userValue = '';
